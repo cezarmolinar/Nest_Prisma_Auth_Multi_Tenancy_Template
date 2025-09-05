@@ -1,0 +1,59 @@
+### Usuário COMUM
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Fulano",
+  "email": "user@teste.com",
+  "password": "123456"
+}
+
+
+### Usuário PARTNER
+POST  http://localhost:3000/partners/users
+Content-Type: application/json
+
+{
+  "name": "Admin ",
+  "email": "admin2@partner.com",
+  "password": "123456"
+}
+
+###
+GET http://localhost:3000/users
+
+
+### LOGIN
+POST  http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin1@partner.com",
+  "password": "123456"
+}
+
+### PARTNER
+POST  http://localhost:3000/partners
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYWRtaW4yQHBhcnRuZXIuY29tIiwiaWF0IjoxNzU3MTAxNTQ4LCJleHAiOjE3NTcxMDUxNDh9.A5tpoilqGE6e-1s92MFx4G2u0e1bAtbmgMTAh5JLTGs
+
+{
+  "name": "empresa 2"
+}
+
+### EVENTS
+POST  http://localhost:3000/events
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWRtaW4xQHBhcnRuZXIuY29tIiwiaWF0IjoxNzU3MTAxNjM4LCJleHAiOjE3NTcxMDUyMzh9.g61jVc3FRqQyqQs_Q_yLrbG7HWedi21klNmDKy_uCNI
+
+{
+  "name": "Evento 03",
+  "description": "Evento 03",
+  "date": "2025-09-05T16:11:04.600Z"
+}
+
+### EVENTS
+GET  http://localhost:3000/events
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluICIsImVtYWlsIjoiYWRtaW4xQHBhcnRuZXIuY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI1LTA5LTA1VDE5OjQzOjA0LjEzN1oiLCJ1cGRhdGVkQXQiOiIyMDI1LTA5LTA1VDIxOjU3OjIwLjAwOVoiLCJpYXQiOjE3NTcxMDk0NTUsImV4cCI6MTc1NzExMzA1NX0.6EDm7ikHLhQteoIksx6rcxDGksjSO_35En3A0nHJz14
+
+

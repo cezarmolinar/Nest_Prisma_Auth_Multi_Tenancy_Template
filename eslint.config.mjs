@@ -31,7 +31,7 @@ export default tseslint.config(
       // regra de promessas flutuantes
       '@typescript-eslint/no-floating-promises': 'warn',
       // regra de argumentos inseguros
-      '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'error',
       // regra de prefixo em interfaces
       '@typescript-eslint/interface-name-prefix': 'off',
       // regra de tipo de retorno explícito em funções

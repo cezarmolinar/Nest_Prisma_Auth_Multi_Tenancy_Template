@@ -14,12 +14,53 @@ datasource db {
 }
 
 model User {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(100)
+  email       String        @unique @db.VarChar(100)
+  password    String
+  roles       Json
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PartnerUser PartnerUser[]
+
+  @@map("users")
+}
+
+model Partner {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(100)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PartnerUser PartnerUser[]
+  Event       Event[]
+
+  @@map("partners")
+}
+
+model PartnerUser {
   id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(100)
-  email     String   @unique @db.VarChar(100)
-  password  String
+  partnerId Int
+  userId    Int
+  Partner   Partner  @relation(fields: [partnerId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("users")
+  @@unique([userId], name: "partner_user_unique")
+  // ou
+  //@@unique([partnetID, userId], name: "partner_user_unique")
+  @@map("partner_users")
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  description String?
+  date        DateTime
+  partnerId   Int
+  Partner     Partner  @relation(fields: [partnerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("events")
 }
